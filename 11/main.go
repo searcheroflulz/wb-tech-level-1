@@ -12,15 +12,12 @@ import (
 func intersection(set1, set2 []int) []int {
 	result := make([]int, 0)
 
-	// Создаем мапу для проверки уникальности элементов
 	seen := make(map[int]bool)
 
-	// Добавляем элементы из первого множества в мапу
 	for _, elem := range set1 {
 		seen[elem] = true
 	}
 
-	// Проверяем наличие элементов из второго множества в мапе
 	for _, elem := range set2 {
 		if seen[elem] {
 			result = append(result, elem)

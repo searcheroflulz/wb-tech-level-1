@@ -47,6 +47,7 @@ func generateData(dataChannel chan int, ctx context.Context) {
 }
 
 func main() {
+	//ждем Ctrl+C через notifyContext, который даст возможность получить ctx.Done(), чтобы завершить работу воркеров
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
@@ -61,5 +62,4 @@ func main() {
 	}
 	go generateData(dataChannel, ctx)
 	wg.Wait()
-
 }

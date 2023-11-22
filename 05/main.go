@@ -37,7 +37,7 @@ func receiveData(ctx context.Context, ch chan int) {
 
 func main() {
 	dataChan := make(chan int)
-	sec := 30
+	sec := 10
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec)*time.Second)
 	defer cancel()
 

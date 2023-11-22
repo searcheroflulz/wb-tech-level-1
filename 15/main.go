@@ -20,6 +20,7 @@ func main() {
 
 */
 
+// глобальная переменная будет лежать в пямяти до завершения работы программы
 var justString string
 
 func createHugeString(size int) string {

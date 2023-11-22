@@ -25,7 +25,7 @@ func channelTermination(stopChannel chan bool) {
 	}
 }
 
-// Передаем в горутину указатель на какую-то переменную. Если она меняется - выходим из горутины.
+// Передаем в горутину указатель на общую переменную. Если она меняется - выходим из горутины.
 func sharedVariable(stopIt *bool, wg *sync.WaitGroup) {
 	defer wg.Done()
 
