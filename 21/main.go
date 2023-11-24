@@ -6,19 +6,21 @@ import "fmt"
 Реализовать паттерн «адаптер» на любом примере.
 */
 
-type ImageProcessor interface {
-	processBlackAndWhite() string
+type BlackAndWhitePrinter struct{}
+
+func (bwp *BlackAndWhitePrinter) PrintBlackAndWhite(img Image) {
+	fmt.Println(img.processBlackAndWhite())
 }
 
-type ColorProcessor interface {
-	processColor() string
+type Image interface {
+	processBlackAndWhite() string
 }
 
 type BlackAndWhiteImage struct {
 	name string
 }
 
-func (bw *BlackAndWhiteImage) processBlackAndWhite() string {
+func (bw BlackAndWhiteImage) processBlackAndWhite() string {
 	return fmt.Sprint(bw.name, " is black and white")
 }
 
@@ -35,7 +37,7 @@ type ColorImageAdapter struct {
 	colorImage *ColorImage
 }
 
-func (ca *ColorImageAdapter) processBlackAndWhite() string {
+func (ca ColorImageAdapter) processBlackAndWhite() string {
 	return fmt.Sprint(ca.colorImage.name, " was colorful but now it is black and white")
 }
 
@@ -44,7 +46,8 @@ func main() {
 	colorImage := ColorImage{"Grandchildren's photo"}
 
 	colorImageAdapter := ColorImageAdapter{&colorImage}
+	printer := BlackAndWhitePrinter{}
 
-	fmt.Println(blackAndWhiteImage.processBlackAndWhite())
-	fmt.Println(colorImageAdapter.processBlackAndWhite())
+	printer.PrintBlackAndWhite(blackAndWhiteImage)
+	printer.PrintBlackAndWhite(colorImageAdapter)
 }
