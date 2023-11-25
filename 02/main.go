@@ -11,10 +11,10 @@ import (
 значение квадратов чисел взятых из массива (2,4,6,8,10) и выведет их квадраты в stdout.
 */
 
+// считаем квадраты и сразу выводим в stdout
 func getSquare(wg *sync.WaitGroup, num int) {
 	defer wg.Done()
 	fmt.Printf("square of %v = %v\n", num, math.Pow(float64(num), 2))
-
 }
 
 func main() {

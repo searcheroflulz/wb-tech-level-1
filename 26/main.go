@@ -19,7 +19,9 @@ aabcd — false
 func stringUnique(s string) bool {
 	temp := make(map[rune]struct{})
 
+	//меняем все на нижний регистр
 	for _, letter := range strings.ToLower(s) {
+		//добавляем символы в мапу, и если хотя бы одно уже там есть - возвращаем false
 		if _, ok := temp[letter]; ok {
 			return false
 		}

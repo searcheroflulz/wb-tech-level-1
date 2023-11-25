@@ -10,9 +10,10 @@ import (
 По завершению программа должна выводить итоговое значение счетчика.
 */
 
+// добавляем к счетчику mutex, чтобы лишь одна горутина могла его инкрементировать
 type Counter struct {
 	value int
-	sync.RWMutex
+	sync.Mutex
 }
 
 func (c *Counter) Increment() {

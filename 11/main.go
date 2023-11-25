@@ -13,11 +13,11 @@ func intersection(set1, set2 []int) []int {
 	result := make([]int, 0)
 
 	seen := make(map[int]bool)
-
+	//заполняем мапу значениеями из первого слайса
 	for _, elem := range set1 {
 		seen[elem] = true
 	}
-
+	//если такой ключ уже есть, то добавляем значение в слайс
 	for _, elem := range set2 {
 		if seen[elem] {
 			result = append(result, elem)

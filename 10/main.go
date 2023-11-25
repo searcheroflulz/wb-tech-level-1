@@ -14,10 +14,10 @@ func groupTemperatures(temperatures []float64) map[int][]float64 {
 	groups := make(map[int][]float64)
 
 	for _, temp := range temperatures {
-		//Округляем температуру вниз до ближайшего десятка
+		//округляем температуру вниз до ближайшего десятка
 		roundedTemp := int(math.Floor(temp/10) * 10)
 
-		//Добавляем температуру в соответствующую группу
+		//добавляем температуру в соответствующую группу
 		groups[roundedTemp] = append(groups[roundedTemp], temp)
 	}
 

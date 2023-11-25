@@ -9,11 +9,15 @@ import "fmt"
 func main() {
 	sequence := []string{"cat", "cat", "dog", "cat", "tree"}
 
-	result := make(map[string]bool)
-
+	m := make(map[string]struct{})
+	//добавляем элементы в мапу, где повторяющиеся просто не будут записаны
 	for _, element := range sequence {
-		result[element] = true
+		m[element] = struct{}{}
 	}
+	var result []string
 
+	for v := range m {
+		result = append(result, v)
+	}
 	fmt.Println("Result:", result)
 }

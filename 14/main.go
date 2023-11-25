@@ -10,7 +10,7 @@ import (
 int, string, bool, channel из переменной типа interface{}.
 */
 
-func detectType(variable any) {
+func detectType(variable interface{}) {
 	switch variable.(type) {
 	case int:
 		fmt.Println("int")

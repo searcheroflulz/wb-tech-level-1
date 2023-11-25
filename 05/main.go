@@ -20,7 +20,7 @@ func sendData(ctx context.Context, ch chan int) {
 		default:
 			ch <- rand.Intn(1000)
 		}
-		time.Sleep(5 * time.Second)
+		time.Sleep(3 * time.Second)
 	}
 }
 
@@ -37,7 +37,8 @@ func receiveData(ctx context.Context, ch chan int) {
 
 func main() {
 	dataChan := make(chan int)
-	sec := 10
+	//создаем контекст, который отправит сигнал через N sec
+	sec := 20
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(sec)*time.Second)
 	defer cancel()
 

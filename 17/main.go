@@ -26,7 +26,7 @@ func binarySearch(arr []int, key int) int {
 
 func main() {
 	sortedArr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	key := 1
+	key := 4
 	index := binarySearch(sortedArr, key)
 
 	fmt.Printf("%v is the %v element", key, index)

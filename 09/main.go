@@ -10,6 +10,7 @@ import (
 после чего данные из второго канала должны выводиться в stdout.
 */
 
+// пишем числа в канал
 func writeData(input chan int, arr []int, wg *sync.WaitGroup) {
 	defer wg.Done()
 	defer close(input)
@@ -19,6 +20,7 @@ func writeData(input chan int, arr []int, wg *sync.WaitGroup) {
 	}
 }
 
+// умножаем числа из канала и кладем их в другой канал
 func multiply(dataChan chan int, output chan int, wg *sync.WaitGroup) {
 	defer close(output)
 	defer wg.Done()
@@ -28,6 +30,7 @@ func multiply(dataChan chan int, output chan int, wg *sync.WaitGroup) {
 	}
 }
 
+// выводим результат
 func showResult(dataChan chan int, wg *sync.WaitGroup) {
 	defer wg.Done()
 

@@ -7,6 +7,7 @@ import "fmt"
 Реализовать встраивание методов в структуре Action от родительской структуры Human (аналог наследования).
 */
 
+// создааем структуру Human
 type Human struct {
 	Age     int
 	Name    string
@@ -17,6 +18,7 @@ func (h *Human) Walk() {
 	fmt.Println(h.Name, "is walking")
 }
 
+// в структуре Action реализуем встраивание
 type Action struct {
 	Human
 }

@@ -11,7 +11,7 @@ import (
 Реализовать все возможные способы остановки выполнения горутины.
 */
 
-// Слушаем канал, по которому может что-то прийти, и если приходит - выходим из горутины.
+// слушаем канал, по которому может что-то прийти, и если приходит - выходим из горутины.
 func channelTermination(stopChannel chan bool) {
 	for {
 		select {
@@ -25,7 +25,7 @@ func channelTermination(stopChannel chan bool) {
 	}
 }
 
-// Передаем в горутину указатель на общую переменную. Если она меняется - выходим из горутины.
+// передаем в горутину указатель на общую переменную. Если она меняется - выходим из горутины.
 func sharedVariable(stopIt *bool, wg *sync.WaitGroup) {
 	defer wg.Done()
 
@@ -40,7 +40,7 @@ func sharedVariable(stopIt *bool, wg *sync.WaitGroup) {
 	}
 }
 
-// Получаем закрытие канала - выходим из горутины.
+// получаем закрытие канала - выходим из горутины.
 func channelClosure(stopChannel chan struct{}) {
 	for {
 		select {
@@ -54,7 +54,7 @@ func channelClosure(stopChannel chan struct{}) {
 	}
 }
 
-// Контекст отменяется по какой-либо причине - выходим из горутины.
+// контекст отменяется по какой-либо причине - выходим из горутины.
 func contextNotification(ctx context.Context) {
 	for {
 		select {

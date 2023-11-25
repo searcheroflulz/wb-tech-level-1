@@ -18,9 +18,9 @@ import (
 Программа должна завершаться по нажатию Ctrl+C. Выбрать и обосновать способ завершения работы всех воркеров.
 */
 
+// воркер читает данные в цикле, пока не прийдет сигнал от контекста
 func worker(dataChannel chan int, wg *sync.WaitGroup, workerID int, ctx context.Context) {
 	defer wg.Done()
-	//fmt.Printf("Worker %d - starting session\n", workerID)
 
 	for {
 		select {
@@ -33,6 +33,7 @@ func worker(dataChannel chan int, wg *sync.WaitGroup, workerID int, ctx context.
 	}
 }
 
+// генерируем данные в канал каждые 2 сек, пока не получим сигнал от контекста
 func generateData(dataChannel chan int, ctx context.Context) {
 	defer close(dataChannel)
 	for {

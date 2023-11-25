@@ -6,12 +6,14 @@ import "fmt"
 Реализовать паттерн «адаптер» на любом примере.
 */
 
+// есть принтер, который печатает только черно-белые фото
 type BlackAndWhitePrinter struct{}
 
 func (bwp *BlackAndWhitePrinter) PrintBlackAndWhite(img Image) {
 	fmt.Println(img.processBlackAndWhite())
 }
 
+// черно-белый принтер принимает данный интерфейс
 type Image interface {
 	processBlackAndWhite() string
 }
@@ -37,6 +39,7 @@ type ColorImageAdapter struct {
 	colorImage *ColorImage
 }
 
+// данной функцией мы удовлетворяем требованиям интерфейса Image
 func (ca ColorImageAdapter) processBlackAndWhite() string {
 	return fmt.Sprint(ca.colorImage.name, " was colorful but now it is black and white")
 }

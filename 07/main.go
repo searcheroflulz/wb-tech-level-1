@@ -10,7 +10,8 @@ import (
 Реализовать конкурентную запись данных в map.
 */
 
-func writeData(dataMap map[int]int, mutex *sync.RWMutex, wg *sync.WaitGroup) {
+// используем mutex, чтобы не было состояния гонки
+func writeData(dataMap map[int]int, mutex *sync.Mutex, wg *sync.WaitGroup) {
 	defer wg.Done()
 	mutex.Lock()
 	dataMap[rand.Intn(100)]++
@@ -19,7 +20,7 @@ func writeData(dataMap map[int]int, mutex *sync.RWMutex, wg *sync.WaitGroup) {
 
 func main() {
 	dataMap := make(map[int]int)
-	var mutex sync.RWMutex
+	var mutex sync.Mutex
 
 	var wg sync.WaitGroup
 	numGoroutines := 9
